@@ -1,26 +1,28 @@
-import numpy as np 
+import math
 
-def arctan4(x, y):
-    if x > 0 and y > 0:
-        theta = np.arctan(y/x)
-    
-    elif x < 0 and y > 0:
-        theta = np.pi - abs(np.arctan(y/x))
-    
-    elif x < 0 and y < 0: 
-        theta = np.pi + abs(np.arctan(y/x))
-    
-    elif x > 0 and y < 0:
-        theta = 2*np.pi - abs(np.arctan(y/x))
-    
+def arctan4(y, x):
+    if x < 0 and y > 0:
+        theta = math.atan(y/x) + math.pi
+
+    elif x < 0 and y < 0:
+        theta = math.atan(y/x) - math.pi
+
+    elif x < 0 and y == 0:
+        theta = math.pi
+
     elif x == 0 and y > 0:
-        theta = np.pi/2
-    
+        theta = math.pi/2
+
     elif x == 0 and y < 0:
-        theta = (3*np.pi)/2
-        
-    elif x > 0 and y == 0:
-        
+        theta = -math.pi/2
+
+    elif x > 0 and y >= 0:
+        theta = math.atan(y/x)
+
+    elif x > 0 and y < 0:
+        theta = math.atan(y/x)
+
+    else:
+        theta = 0
     return theta
-        
 
